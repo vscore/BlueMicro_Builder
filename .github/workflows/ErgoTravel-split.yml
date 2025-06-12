@@ -1,6 +1,6 @@
-# Use this workflow to initialize your repository with the fimware you need for your keyboard
+# Use this workflow to initialize your repository with the firmware you need for your keyboard
 # if you have multiple keyboards, you need to have 1 copy of this file per keyboard
-# rename the name below so that you can see the different keyboards in your github actions
+# rename the name below so that you can see the different keyboards in your GitHub Actions
 name: ErgoTravel-split
 
 # You will need to manually trigger this workflow
@@ -18,9 +18,9 @@ jobs:
         keyboard: ['ErgoTravel']
         # Keymap of the keyboard to setup.  Multiple keymaps can be setup following this example: ['default','jpconstantineau']
         keymap: ['default']
-        # keyboard configuration. Multiple configs can be setup following this example: ['left','right']
+        # Keyboard configuration. Multiple configs can be setup following this example: ['left','right']
         keyboard_config: ['left','right']
-        # hardware configuration. must have both components of the path in the BlueMicro_BLE keyboard examples path
+        # Hardware configuration. Must have both components of the path in the BlueMicro_BLE keyboard examples path
         hardware_config: ['bluemicro840']
         # Available options
         # feather52832 - use this for most nRF52832 based boards (needs Arduino_nRF52_Bootloader)
@@ -30,7 +30,7 @@ jobs:
         # pca10056 - use this for all other nRF52840 based boards not listed above (needs Arduino_nRF52_Bootloader)
         compile_with: ['bluemicro_nrf52840']
 
-    # you shouldn't need to edit anything below
+    # You shouldn't need to edit anything below
     steps:
       - name: checkout builder repo
         uses: actions/checkout@v4
@@ -88,7 +88,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
-          python-version: '3.8'
+          python-version: '3.9' # Updated Python version
       # We use the arduino/setup-arduino-cli action to install and
       # configure the Arduino CLI on the system.
       - name: Setup Arduino CLI
@@ -111,7 +111,7 @@ jobs:
           arduino-cli core list
           arduino-cli board listall
           arduino-cli lib list
-      - name: Compile Fimware
+      - name: Compile Firmware
         env:
           BSP_PATH: .arduino15/packages/adafruit/hardware/nrf52
         run: |
