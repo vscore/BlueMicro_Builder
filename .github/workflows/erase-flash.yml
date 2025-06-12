@@ -1,4 +1,3 @@
-
 name: Test examples
 
 on: [pull_request, push, 'workflow_dispatch']
@@ -16,7 +15,7 @@ jobs:
     steps:    
       # First of all, we clone the repo using the checkout action.
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
@@ -56,7 +55,7 @@ jobs:
           python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
           ls -lR ./${{ matrix.sketch }}/build/
       - name: Archive artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: firmware
           path: |
